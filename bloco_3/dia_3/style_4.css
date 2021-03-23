@@ -1,0 +1,77 @@
+.order_list
+{
+  background-color: yellow;
+}
+
+.par 
+{
+  color: green;
+}
+
+.primo
+{
+  text-transform: uppercase;
+}
+
+h1, h3
+{
+  color: red;
+}
+
+h1 em, h3 em
+{
+  font-size: 40px;
+  border: 1px solid black;
+}
+
+li
+{
+  font-size: 20px;
+}
+
+li em
+{
+  font-weight: bolder;
+}
+
+.top3 
+{
+  color: blue;
+}
+
+.java
+{
+  background-color: pink;
+}
+
+.sites li:hover
+{
+  font-weight: bolder;
+}
+
+.stack:hover
+{
+  color: orange;
+}
+
+.w3:hover
+{
+  color: green;
+}
+
+.mdn:hover
+{
+  color: black;
+}
+
+.dev:hover
+{ 
+  color: yellow;
+}
+
+.trybe:hover 
+{
+  color: green;
+}
+
+

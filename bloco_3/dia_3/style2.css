@@ -1,0 +1,17 @@
+h1, p
+{
+  text-align: center;
+  color: blueviolet;
+}
+li:active
+{
+  color: blueviolet;
+}
+li:hover
+{
+  background-color: chartreuse;
+}
+
+ul, ol {
+  list-style: none;
+}

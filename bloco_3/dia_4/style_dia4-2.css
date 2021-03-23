@@ -1,0 +1,48 @@
+*{
+  font-family: "Montserrat", sans-serif;
+}
+
+main 
+{
+  margin: auto; 
+}
+header 
+{
+  margin: auto;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+img
+{
+  width: 450px;
+}
+
+.links
+{
+  display: inline-block;
+}
+aside
+{
+  margin: 20px;
+  padding: 20px;
+  
+  display: inline-block;
+  vertical-align: top;
+}
+
+p
+{
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+section
+{
+  width: 60%;
+  display: inline-block;
+}
