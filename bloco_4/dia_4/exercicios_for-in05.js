@@ -25,6 +25,6 @@ for (let index in info) {
     console.log(info[index] + ' e ' + secondInfo[index]);
     
   }
-  console.log(index)
-  console.log(secondInfo["personagem"])
+ 
+
 }
