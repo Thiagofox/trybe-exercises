@@ -8,3 +8,4 @@ info['recorrente'] = 'sim';
 for (index in info){
   console.log(info[index]);
 }
+
