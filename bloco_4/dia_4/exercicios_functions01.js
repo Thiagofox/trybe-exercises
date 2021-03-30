@@ -11,3 +11,6 @@ function palindrome (info){
   return bool;
 }
 
+let word = 'thiago';
+
+console.log(palindrome(word));
