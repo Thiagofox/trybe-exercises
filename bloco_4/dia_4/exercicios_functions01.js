@@ -12,5 +12,4 @@ function palindrome (info){
 }
 
 let word = 'thiago';
-
 console.log(palindrome(word));

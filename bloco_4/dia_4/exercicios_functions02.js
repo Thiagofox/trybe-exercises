@@ -7,8 +7,7 @@ function higherValue(array){
   
   for (let index =0 ; index < array.length; index += 1){
     
-    if (array[index] > array[index + 1]){
-      higherNumber = array[index];
+    if (array[index] > position){
       position = index;
     }
   }
