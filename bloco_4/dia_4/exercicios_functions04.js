@@ -5,7 +5,7 @@ function higherCharCount(names){
   let biggerChars = 0;
   let bigerName;
 
-  for (let index = 0; index < names.length; index += 1){
+  for (let index in names){
     charNumbers = names[index].length;
     
     if(charNumbers > biggerChars){
