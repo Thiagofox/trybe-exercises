@@ -41,3 +41,16 @@ figure {
     margin-right: 4.5%;
 }
 }
+
+@media screen and (min-width: 1000px) {
+  body {
+      background-color: lightblue;
+      margin: 25px 10%;
+      max-width: 1130px;
+  }
+
+  figure {
+      width: 30%;
+      margin-right: 2.5%;
+  }
+}
