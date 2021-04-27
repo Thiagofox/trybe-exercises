@@ -1,4 +1,4 @@
-// Exercicio bloco 7 - Dia 1
+// Exercicio bloco 7 - Dia 1 - Parte 1
 /*
 1 - Faça as modificações necessárias na função para que o seu comportamento respeite o escopo no qual cada variável foi declarada.
 
