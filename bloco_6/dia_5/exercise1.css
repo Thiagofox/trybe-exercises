@@ -1,0 +1,56 @@
+body {
+font-size: medium;
+margin: 35px ;
+
+
+}
+h1 {
+font-size: x-large;
+}
+h2 {
+font-size: larger;
+}
+
+img {
+    max-width: 100%;
+    padding: 15px; 
+}
+
+figure {
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-color: lightslategrey;
+    font-size: large;
+    width: 80%;
+  }
+  /* .images {
+    display: flex;
+    width: 45%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    flex-basis: 45%;
+
+
+  } */
+  figure {
+    float: left;
+    width: 45%;
+    margin-right: 4.5%;
+}
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+      background-color: lightblue;
+      margin: 25px 10%;
+      max-width: 1130px;
+  }
+
+  figure {
+      width: 30%;
+      margin-right: 2.5%;
+  }
+}
