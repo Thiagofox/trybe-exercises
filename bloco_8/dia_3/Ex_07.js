@@ -1,18 +1,4 @@
-// Exercicio 2 - bloco 8 - Dia 3 => High Order Functions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Exercicio 7 - bloco 8 - Dia 3 => High Order Functions
 
 
 const assert = require('assert');
@@ -80,38 +66,15 @@ const books = [
   },
 ];
 
-const expectedResult = [
-  {
-    id: 6,
-    name: 'O Chamado de Cthulhu',
-    genre: 'Terror',
-    author: { name: 'H. P. Lovecraft', birthYear: 1890 },
-    releaseYear: 1928,
-  },
-  {
-    id: 3,
-    name: 'Fundação',
-    genre: 'Ficção Científica',
-    author: { name: 'Isaac Asimov', birthYear: 1920 },
-    releaseYear: 1951,
-  },
-  {
-    id: 2,
-    name: 'O Senhor dos Anéis',
-    genre: 'Fantasia',
-    author: { name: 'J. R. R. Tolkien', birthYear: 1892 },
-    releaseYear: 1954,
-  },
-];
-
-// Crie um array ordenado pelos livros com mais de 60 anos de publicação e ordene-o pelo livro mais velho.
-
-// Dica: use as funções filter e sort
+// Encontre o nome do livro escrito pela pessoa cujo nome registrado começa com três iniciais. Dica: cada inicial termina com um ponto.
 
 
-function oldBooks() {
-  const year = 2021;
-  return books.filter((book) => (year - book.releaseYear) > 60).sort((bookA, bookB) => (bookA.releaseYear - bookB.releaseYear));
+const expectedResult = 'O Senhor dos Anéis';
+
+function authorWith3DotsOnName() {
+  return books.find((book) => (
+    book.author.name.split(' ').filter((word) => word.endsWith('.')).length === 3
+  )).name;
 }
 
-assert.deepStrictEqual(oldBooks(), expectedResult);
+assert.deepStrictEqual(authorWith3DotsOnName(), expectedResult);
