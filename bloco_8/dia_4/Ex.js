@@ -20,5 +20,3 @@ function withoutG () {
   return animais.find((value) => value.startsWith('j'));
 }
 console.log(withoutG());
-
-

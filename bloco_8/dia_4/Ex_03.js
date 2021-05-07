@@ -80,6 +80,5 @@ function getBooks (acc, curr) {
   return acc + (curr.releaseYear - curr.author.birthYear);
 }
 
-
 console.log(averageAge())
 assert.strictEqual(averageAge(), expectedResult);
