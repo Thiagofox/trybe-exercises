@@ -1,3 +1,9 @@
+// Exercicio 2 - Bloco 8 - Dia 5 => JavaScript ES6 - spread operator, parâmetro rest, destructuring e mais
+
+// Crie uma função sum que dado um número variável de elementos retorna a soma desses elementos. Ou seja:
+// Dica: use parâmetro rest .
+
+
 const assert = require('assert');
 
 function sum (... args) {

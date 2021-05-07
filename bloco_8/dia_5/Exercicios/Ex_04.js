@@ -34,10 +34,10 @@ const people = [
 ];
 
 const filterPeople = (arr) => arr.filter(({nationality, bornIn}) =>
-    (nationality === 'Australian' && (bornIn > 1900 && bornIn < 2000))
+    (nationality === 'Australian' && bornIn > 1900 && bornIn < 2000)
 )
 
-console.log(filterPeople())
+console.log(filterPeople(people))
 const filteredPeople = filterPeople(people);
 
 assert.deepStrictEqual(filteredPeople[0], { name: 'Nicole', bornIn: 1992, nationality: 'Australian' });
