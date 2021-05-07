@@ -19,7 +19,7 @@ console.log(z); // 0
 
 // ==========================================================================>
 
-const getNationality = ({ firstName, nationality }) => `${firstName} is ${nationality}`;
+const getNationality = ({ firstName, nationality = 'Brazilian' }) => `${firstName} is ${nationality}`;
 
 const person = {
     firstName: 'João',
@@ -33,4 +33,6 @@ const otherPerson = {
 };
 
 console.log(getNationality(otherPerson)); // Ivan is Russian
-console.log(getNationality(person, {nationality = 'brazilian'}));
+console.log(getNationality(person));
+
+// ==========================================================================>
