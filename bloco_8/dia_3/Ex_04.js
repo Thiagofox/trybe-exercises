@@ -1,19 +1,4 @@
-// Exercicio 2 - bloco 8 - Dia 3 => High Order Functions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Exercicio 4 - bloco 8 - Dia 3 => High Order Functions
 
 const assert = require('assert');
 

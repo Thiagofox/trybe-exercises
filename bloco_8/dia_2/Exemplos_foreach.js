@@ -1,4 +1,6 @@
 
+
+
 meuArray.forEach((elemento) => {
   if (elemento % 2 === 0) {
     console.log(`${elemento} é divísivel por 2!`);
