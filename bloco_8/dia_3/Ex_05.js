@@ -1,3 +1,5 @@
+// Exercicio 5 - bloco 8 - Dia 3 => High Order Functions
+
 const assert = require('assert');
 
 const books = [
@@ -75,5 +77,6 @@ const expectedResult = [
 function fantasyOrScienceFictionAuthors() {
   return books.filter((book) => (book.genre === 'Ficção Científica' || book.genre === 'Fantasia')).map((book) => book.author.name).sort();
 }
+
 
 assert.deepStrictEqual(fantasyOrScienceFictionAuthors(), expectedResult);
