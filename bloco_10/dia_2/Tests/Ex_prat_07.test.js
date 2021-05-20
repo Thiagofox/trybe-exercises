@@ -39,4 +39,4 @@ describe('Testando Async/Await - findAnimalsByType', () => {
       await expect(getListAnimals('Lion')).rejects.toEqual({ error: 'Não possui esse tipo de animal.' })
     });
   });
-});
+}); 

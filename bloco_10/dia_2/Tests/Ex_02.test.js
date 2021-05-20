@@ -33,3 +33,5 @@ describe('when the user id does not exists', () => {
       expect(error).toEqual({ error: 'User with 2 not found.' }))
     });
   });
+
+  
