@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import pokemons from './data.js'
 import Pokedex from './Pokedex.js'
+
+
 function App() {
   return (
     <div className="App">
