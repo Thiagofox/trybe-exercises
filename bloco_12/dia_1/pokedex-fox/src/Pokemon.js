@@ -1,6 +1,7 @@
 import React from 'react';
 import './pokemon.css';
 
+
 class Pokemon extends React.Component {
   render() {
     const { name, type, averageWeight, image } = this.props.pokemon;
