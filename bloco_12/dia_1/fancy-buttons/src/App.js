@@ -1,43 +1,50 @@
-import './App.css';
-import React, { Component } from 'react'
+import React from 'react';
 
-class App extends Component {
-  constructor(){
-    super()
+class App extends React.Component {
+  constructor() {
+    super();
     this.state = {
-      clicksBtn: 0,
-    }
-    this.handle3 = this.handle3.bind(this);
-    this.changeColor = this.changeColor.bind(this);
+      clicksBtnOne: 0,
+      clicksBtnTwo: 0,
+      clicksBtnThree: 0,
+    };
+
+    this.handleButtonOne = this.handleButtonOne.bind(this);
+    this.handleButtonTwo = this.handleButtonTwo.bind(this);
+    this.handleButtonThree = this.handleButtonThree.bind(this);
+
+    
+  }
+
+  handleButtonOne() {
+    this.setState((prevState) => ({
+      clicksBtnOne: prevState.clicksBtnOne + 1,
+    }));
   }
   
-  handle3() {
+  handleButtonTwo() {
+    this.setState((prevState) => ({
+      clicksBtnTwo: prevState.clicksBtnTwo + 1,
+    }));
+  }
+  
+  handleButtonThree() {
     // A única coisa diferente é a desconstrução.
     // Apenas um método diferente de fazer a mesma coisa
     // do que foi feito nas funções anteriores.
-    this.setState(({ clicksBtn }) => ({
-      clicksBtn: clicksBtn + 1,
+    this.setState(({ clicksBtnThree }) => ({
+      clicksBtnThree: clicksBtnThree + 1,
     }));
-  }
-
-  changeColor () {
-    if(this.state.clicksBtn % 2 === 0) {
-      return 'buttonTrue';
-    }
-    return 'buttonFalse';
   }
   
   render() {
     return (
       <div>
-        <button className={this.changeColor} onClick={
-          function() {
-            this.handle3()
-            this.changeColor()
-          } 
-        }>{this.state.clicksBtn}</button>
+        <button onClick={ this.handleButtonOne }>Botão 1 | Count = {this.state.clicksBtnOne}</button>
+        <button onClick={ this.handleButtonTwo }>Botão 2 | Count = {this.state.clicksBtnTwo}</button>
+        <button onClick={ this.handleButtonThree }>Botão 3 | Count = {this.state.clicksBtnThree}</button>
       </div>
-    )
+    );
   }
 }
 
