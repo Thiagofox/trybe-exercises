@@ -82,6 +82,7 @@ class Pokedex extends React.Component {
         {/* aqui usamos o resultado do filter acima -> list com o valor do estado */}
         <Pokemon pokemon = {list[this.state.pokemonIndex]} /> 
         {this.createAllBtn()}
+        {/* crie um botão com a função de quando clicado ele chama a função getNextPKM enviando como paramentro a lista de pokemons filtrados e aqui vai um if ternario para caso essa lista tiver o tamanho menos ou igual a 1 o botão ficaria desativado pois não haveria outro pokemon na lista para ser proximo */}
         <button 
           onClick={()=> this.getNextPKM(list)} 
           disabled={list.length <= 1 ? true : false} >
