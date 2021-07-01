@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codigo Video Luanderson 16.1</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.0/redux.min.js"></script>
+
+</head>
+<body>
+  <main>
+    <section>
+      <label>
+        Incluir Tarefa:
+        <input type="text" id="taskImput">
+      </label>
+      <button id="btnAddTask">
+        Adicionar
+      </button>
+    </section>
+    <section id="showTasks">
+      
+    </section>
+    
+  </main>
+
+  <script defer>
+    
+    // =====================================================================
+    //                            criação do Reducer
+    // ===================================================================== 
+   
+    const INITIAL_STATE = {
+      tasks: []
+    }
+
+    function toDoReducer(state = INITIAL_STATE, action) {
+      switch(action.type) {
+        case 'ADD_TASK':
+          return { tasks: [...state.tasks, action.payload]}
+        default:
+          return state
+      }
+      return state
+    }
+
+    // criação do reducer 
+    // => é uma função 
+    // => atribui-se qualquer nome 
+    // => recebe dois parametros - state - e - action - 
+   
+    // =====================================================================
+    //                           criação da action 
+    // ===================================================================== 
+    //instrução para o reducer de como será alterado o estado
+    
+    function addTaskAction(newTask) {
+      return {
+        type: 'ADD_TASK',
+        payload: newTask
+      }
+    }
+    
+    // =====================================================================
+    //                           criação da store
+    // ===================================================================== 
+    
+    const store = Redux.createStore(toDoReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+    function renderTasks (tasks) {
+      const sectionTask = document.getElementById('showTasks')
+      sectionTask.innerHTML = ''
+      tasks.forEach((task) => {
+        const li = document.createElement('li')
+        li.innerHTML = task
+        sectionTask.appendChild(li);
+
+      }) 
+    }
+    
+    store.subscribe(() => {
+      console.log(store.getState());
+      const taskInStore = store.getState().tasks;
+      console.log(taskInStore);
+      renderTasks(taskInStore);
+    })
+    // ===================================================================== 
+    //                             eventos da pagina 
+    // ===================================================================== 
+
+    const btnAddTask = document.getElementById('btnAddTask');
+    btnAddTask.addEventListener('click', () => {
+      const taskText = document.getElementById('taskImput').value
+      console.log(taskText)
+      store.dispatch(addTaskAction(taskText))
+    })
+
+    
+    </script>
+    </body>
+    </html>
