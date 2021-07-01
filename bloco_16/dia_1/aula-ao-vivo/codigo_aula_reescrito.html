@@ -9,7 +9,81 @@
 </head>
 
 <body>
-  
+  <div>
+    Clicou <span id="value"></span> vezes
+    <br />
+    <button onclick="decrementBy10()">-10</button>
+    <button id="increment">+</button>
+    <button id="decrement">-</button>
+    <button onclick="incrementBy10()">+10</button>
+    
+  </div>
+  <script>
+    // criação da store => recebe como paramentro um reducer
+    const store = Redux.createStore(contadorReducer);
+
+    // criação do reducer => reducer é uma função que recebe sempre dois parametros o estado e uma action
+    // Geralmente o estado do reducer ou começara vazio ou criaremos um estado inicial para ele, nesse caso 
+    // como o contador esta iniciando com 0 colocaremos o valor dele de 0 tambem 
+    function contadorReducer(state = 0, action) {
+      console.log(action)
+      console.log(state)
+      // resolução com Switch Case 
+      switch (action.type) {
+        case 'INCREMENT':
+          return state + action.value;
+        case 'DECREMENT':
+          return state - action.value;
+        default:
+          return state;
+      }
+      // resolução usando o if
+      // if(action.type === 'INCREMENT') {
+      //   return state + action.value;
+      // }
+      // if (action.type === 'DECREMENT') {
+      // return state - action.value
+      // }
+    }
+    // criamos um vinculo para quando for clicado no botão + do site sera enviado uma action via Dispach
+    document.getElementById('increment').addEventListener('click', () => {
+      
+      // usamos o store .dispatch para envia a action para o reducer => toda action é um objeto 
+      store.dispatch({
+        
+        // action que é um objeto costuma a ter esses elementos, um type e algum valor a ser alterado pelo reducer
+        type: 'INCREMENT', 
+        value: 1
+      })
+      // fluxo => ao clicar no botão + ele ira usar o dispach acionando a store - store.dispatch - mandando a action que esta dentro dele 
+      // => Ao enviar essa action para para a store, ela ira executar o reducer - contadorReducer - e dentro do reducer teremos acesso as informações da action 
+    })
+
+    document.getElementById('decrement').addEventListener('click', () => {
+      store.dispatch({
+        type: 'DECREMENT', 
+        value: 1
+      })
+    })
+
+    function incrementBy10() {
+      store.dispatch({
+        type: 'INCREMENT',
+        value: 10
+      })
+    }
+
+    function decrementBy10(){
+      store.dispatch({
+        type: 'DECREMENT',
+        value: 10
+      })
+    }
+    // não precisa usar esse metodo no React era somente usar um JSX e chamar o estado dentro do span com a quantidade dos clicks
+    // o Subscribe ele é um metodo que fica verificando se houve atualizações no store, caso aconteça ele atualiza o valor no spam
+    store.subscribe(() => document.getElementById('value').innerHTML = store.getState())
+    
+  </script>
 </body>
 
 </html>
