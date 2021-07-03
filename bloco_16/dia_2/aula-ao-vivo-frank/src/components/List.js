@@ -1,9 +1,10 @@
-function list(props) {
+import { connect } from "react-redux"
+
+function list({ tasks }) {
   return (
     <div>
       <ul>
-        <li>Minha Primeira Tarefa</li>
-        <li>Minha segunda Tarefa</li>
+        { tasks.map ((item, index) => <li key={index}>{item}</li>)}
       </ul>
     </div>
 
@@ -11,4 +12,9 @@ function list(props) {
   )
 }
 
-export default list 
+const mapStateToProps = (state) => ({
+  tasks: state.todoReducer.tasks
+})
+
+export default connect(mapStateToProps)(list)
+
