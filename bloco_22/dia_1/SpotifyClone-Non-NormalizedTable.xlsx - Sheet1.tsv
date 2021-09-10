@@ -1,0 +1,12 @@
+usuario_id	usuario	idade	plano	valor_plano	historico_de_reproducoes		usuario_id	seguindo_artistas
+1	Thati	23	gratuito	0	"Soul For Us", "Magic Circus", "Diamond Power", "Thang Of Thunder"		1	Walter Phoenix, Freedie Shannon, Lance Day
+2	Cintia	35	familiar	7,99	"Home Forever", "Words Of Her Life", "Reflections Of Magic", "Honey, Let's Be Silly"		2	Walter Phoenix, Lance Day
+3	Bill	20	universitário	5,99	"Troubles Of My Inner Fire", "Thang Of Thunder", "Magic Circus"		3	Peter Strong, Walter Phoenix,
+4	Roger	45	gratuito	0	"Dance With Her Own", "Without My Streets", "Celebration Of More"		4	Freedie Shannon
+								
+album_id	album	artista	cancoes					
+1	Envious	Walter Phoenix	"Soul For Us", "Reflections Of Magic", "Dance With Her Own"					
+2	Exuberant	Walter Phoenix	"Troubles Of My Inner Fire", "Time Fireworks"					
+3	Hallowed Steam	Peter Strong	"Magic Circus", "Honey, So Do I", "Sweetie, Let's Go Wild", "She Knows"					
+4	Incandescent	Lance Day	"Fantasy For Me", "Celebration Of More", "Rock His Everything", "Home Forever", "Diamond Power", "Honey, Let's Be Silly"					
+5	Temporary Culture	Freedie Shannon	"Thang Of Thunder", "Words Of Her Life", "Without My Streets"					
