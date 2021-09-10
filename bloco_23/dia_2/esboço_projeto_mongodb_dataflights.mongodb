@@ -1,0 +1,214 @@
+use ('dataFlights');
+db.voos.findOne();
+
+
+// Requisitos do projeto]
+
+// Durante a execução do projeto, utilize queries do mongo para retornar os valores pedidos nos requisitos.
+
+// Você deve criar uma pasta chamada challenges na raíz do projeto, contendo dentro dela arquivos no formato desafioX.js onde X é o número do requisito.
+
+// Dentro dos arquivos desafioX.js, crie uma query ou mais (se necessário), para retornar o que o requisito pede.
+
+// 1 - Retorne a quantidade de documentos inseridos na coleção voos.
+
+use ('dataFlights');
+db.voos.count();
+
+// 2 - Retorne os 10 primeiros documentos com voos da empresa AZUL.
+
+use ('dataFlights');
+db.voos.find( {"empresa.nome": "AZUL"} ).limit(10);
+
+// 3 - Retorne a quantidade de voos da empresa AZUL.
+
+use ('dataFlights');
+db.voos.find( {"empresa.nome": "AZUL"} ).count();
+
+// 4 - Retorne a quantidade de voos da empresa GOL.
+
+use ('dataFlights');
+db.voos.find( {"empresa.nome": "GOL"} ).count();
+
+
+// 5 - Retorne o vooId do décimo ao décimo segundo documento da coleção voos.
+
+use ('dataFlights');
+db.voos.find({},{_id: 0, "vooID": 1, },).skip(9).limit(3);
+
+// 6 - Retorne apenas os campos empresa.sigla, empresa.nome e passageiros do voo com o campo vooId igual a 756807.
+
+use ('dataFlights');
+db.voos.find(
+    {vooId: 756807},
+    {
+        _id: 0,
+        "empresa.sigla": 1,
+        "empresa.nome" : 1,
+        "passageiros" : 1 
+    });
+
+// 7 - Retorne a quantidade de voos em que o ano seja menor do que 2017.
+
+use ('dataFlights');
+db.voos.find({ ano: { $lt: 2017 }}).count();
+
+// 8 - Retorne a quantidade de voos em que o ano seja maior do que 2016.
+
+use ('dataFlights');
+db.voos.find({ ano: { $gt: 2016 }}).count();
+
+// 9 - Retorne a quantidade de voos entre os anos de 2017 e 2018.
+
+use ('dataFlights');
+db.voos.find({ ano: { $in: [ 2017, 2018 ] } }).count();
+
+// 10 - Retorne apenas os 10 primeiros documentos com voos da empresa GOL do ano de 2017. Exiba apenas os campos vooId, empresa.nome, aeroportoOrigem.nome, aeroportoDestino.nome, mes e ano.
+
+use ('dataFlights');
+db.voos.find({ $and: [{ "empresa.nome": "GOL"}, {ano: 2017 } ]},
+    { 
+        _id: 0, 
+        vooId: 1, 
+        "empresa.nome": 1,
+        "aeroportoOrigem.nome": 1,
+        "aeroportoDestino.nome": 1,
+        mes: 1, 
+        ano: 1
+    },
+).limit(10);
+
+// 11 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais não seja igual a ESTADOS UNIDOS.
+
+use ('dataFlights');
+db.voos.find({ "aeroportoDestino.pais": { $ne: "ESTADOS UNIDOS" } }).count();
+
+// 12 - Retorne a quantidade de documentos em que o campo aeroportoDestino.pais seja igual a BRASIL, ARGENTINA ou CHILE.
+
+use ('dataFlights');
+db.voos.find({ "aeroportoDestino.pais": { $in: ["BRASIL", "ARGENTINA", "CHILE"] } }).count();
+
+// 13 - Retorne a quantidade de documentos em que o campo aeroportoDestino.continente não seja igual a EUROPA, ÁSIA e OCEANIA.
+
+use ('dataFlights');
+db.voos.find({ "aeroportoDestino.continente": { $in: ["EUROPA", "ÁSIA", "OCEANIA"] } }).count();
+
+// 14 - Retorne o total de voos em que o país de origem não seja BRASIL.
+
+use ('dataFlights');
+db.voos.find({ "aeroportoDestino.pais": { $ne: "BRASIL" } }).count();
+
+// 15 - Retorne o total de voos com mais de 20 decolagens.
+
+use ('dataFlights');
+db.voos.find({ decolagens: { $gt: 20 } }).count();
+
+// 16 - Retorne o total de voos em que o campo natureza possui o valor Internacional.
+
+use ('dataFlights');
+db.voos.find({ natureza: "Internacional" }).count();
+
+// 17 - Retorne o total de voos em que o campo natureza possui o valor Doméstica.
+
+use ('dataFlights');
+db.voos.find({ natureza: "Doméstica" }).count();
+
+// 18 - Retorne o vooId, mes e ano do primeiro voo com mais de 7000 passageiros pagos.
+
+use ('dataFlights');
+db.voos.find({ "passageiros.pagos": { $gt: 7000}},{ vooId: 1, mes: 1, ano: 1});
+
+// 19 - Retorne o vooId do primeiro voo em que o campo litrosCombustivel exista.
+
+use ('dataFlights');
+db.voos.findOne({ litrosCombustivel: { $exists: true } });
+
+// 20 - Retorne o vooId do primeiro voo em que o campo rtk não exista.
+
+use ('dataFlights');
+db.voos.findOne({ rtk: { $not: { $exists: true } } }, 
+{ _id: 0, vooId: 1 });
+
+db.voos.findOne({ rtk: { $exists: false } }, { _id: 0, vooId: 1 });
+
+// 21 - Retorne o vooId do primeiro voo em que o campo litrosCombustivel seja maior ou igual a 1000.
+
+use ('dataFlights');
+db.voos.findOne({ litrosCombustivel: { $gte: 1000 } }, {_id: 0, vooId: 1});
+
+// 22 - Retorne o vooId do primeiro voo em que a empresa seja DELTA AIRLINES ou AMERICAN AIRLINES, a sigla do aeroporto de origem seja SBGR e a sigla do aeroporto de destino seja KJFK.
+
+use ('dataFlights');
+db.voos.findOne({ 
+    "empresa.nome": { $in: [ "DELTA AIRLINES", "AMERICAN AIRLINES" ] },
+    "aeroportoOrigem.sigla": "SBGR",
+    "aeroportoDestino.sigla": "KJFK",
+}, 
+{ _id: 0, vooId:1 }
+);
+    
+
+
+// 23 - Retorne o vooId e litrosCombustivel do primeiro voo em que o campo litrosCombustivel não seja maior do que 1000 e o campo litrosCombustivel exista.
+
+use ('dataFlights');
+db.voos.findOne({ $and: [
+    { litrosCombustivel: { $lt: 1000 } },
+    { litrosCombustivel: { $exists: true } },
+  ] },
+  { _id: 0, vooId: 1, litrosCombustivel: 1 },
+);
+
+// 24 - Retorne o vooId, empresa.nome e litrosCombustivel do primeiro voo em que litrosCombustivel não seja maior do que 600 e a empresa não seja GOL ou AZUL, e o campo litrosCombustivel exista.
+
+use ('dataFlights');
+db.voos.findOne({ $and: [
+    { litrosCombustivel: { $exists: true, $gt: 600 }},
+    { "empresa.nome": { $nin: ["GOL", "AZUL"] } },
+    ]},
+    { _id: 0, "empresa.nome": 1, litrosCombustivel: 1 });
+
+// 25 - Remova todos os voos da empresa AZUL em que a quantidade de combustível seja menor do que 400. Informe a quantidade de documentos removidos.
+
+use ('dataFlights');
+db.voos.deleteMany(
+  {
+    "empresa.nome": "AZUL",
+    litrosCombustivel: { $lt: 400 },
+  },
+);
+
+// 26 - Remova todos os voos da empresa GOL em que a quantidade de passageiros pagos esteja entre 5 e 10, incluindo os casos em que a quantidade é 5 e 10. Informe a quantidade de documentos removidos.
+
+use ('dataFlights');
+db.voos.deleteMany(
+  {
+    "empresa.nome": "GOL",
+    $and: [
+      { "passageiros.pagos": { $gte: 5 } },
+      { "passageiros.pagos": { $lte: 10 } },
+    ],
+  },
+);
+
+// 27 - Retorne a quantidade total de voos de natureza Doméstica que a empresa PASSAREDO possui, via uso de uma nova coleção chamada resumoVoos.
+
+// Ou seja, a coleção resumoVoos conterá documentos onde cada um indica para cada empresa a quantidade total de voos que ela possui de natureza Doméstica.
+
+// Para isso, escreva no arquivo desafio27.js duas queries, nesta ordem:
+
+// Conte quantos voos da empresa PASSAREDO cujo campo natureza possua valor igual a Doméstica e crie uma query que insira na coleção resumoVoos um documento com os campos: empresa (nome da empresa) e totalVoosDomesticos (o total retornado anteriormente).
+
+// Em uma segunda query, retorne a empresa e o totalVoosDomesticos do primeiro documento presente na coleção resumoVoos em que a empresa seja PASSAREDO.
+
+
+use ('dataFlights');
+
+// 28 - Retorne a quantidade total de voos de natureza Doméstica que a empresa LATAM AIRLINES BRASIL possui, via uso de uma nova coleção chamada resumoVoos.
+// Para isso, escreva no arquivo desafio28.js duas queries, nesta ordem:
+
+// Conte quantos voos da empresa LATAM AIRLINES BRASIL cujo campo natureza possua valor igual a Doméstica e crie uma query que insira na coleção resumoVoos um documento com os campos: empresa (nome da empresa) e totalVoosDomesticos (o total retornado anteriormente).
+
+// Em uma segunda query, retorne a empresa e o totalVoosDomesticos do primeiro documento presente na coleção resumoVoos em que a empresa seja LATAM AIRLINES BRASIL.
+
+use ('dataFlights');
