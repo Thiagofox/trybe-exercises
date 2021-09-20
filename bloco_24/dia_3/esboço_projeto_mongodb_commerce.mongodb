@@ -394,11 +394,22 @@ Para isso, escreva no arquivo desafio13.js duas queries, nesta ordem:
 */
 
 use('commerce');
-db.produtos.updateMany();
-db.produtos.updateOne();
+db.produtos.updateMany(
+  { valoresNutricionais: 
+    { $elemMatch: { tipo: "sódio", percentual: { $gte: 40 } } } 
+  },
+  { $push: { tags: "muito sódio" } },
+);
 
 use('commerce');
-db.produtos.find();
+db.produtos.find(
+  {},
+  { 
+    _id: 0, 
+    nome: 1, 
+    tags: 1 
+  },
+);
 
 //===========================================================================
 
@@ -413,11 +424,22 @@ Para isso, escreva no arquivo desafio14.js duas queries, nesta ordem:
 */
 
 use('commerce');
-db.produtos.updateMany();
-db.produtos.updateOne();
+db.produtos.updateMany(
+  { valoresNutricionais: 
+    { $elemMatch: { tipo: "sódio", percentual: { $gt: 20, $lt: 40 } } } 
+  },
+  { $push: { tags: "contém sódio" } },
+);
 
 use('commerce');
-db.produtos.find();
+db.produtos.find(
+  {},
+  { 
+    _id: 0, 
+    nome: 1, 
+    tags: 1 
+  },
+);
 
 //===========================================================================
 
@@ -426,11 +448,9 @@ Requisito 15 - Conte quantos produtos contêm Mc no nome, sem considerar letras 
 */
 
 use('commerce');
-db.produtos.updateMany();
-db.produtos.updateOne();
-
-use('commerce');
-db.produtos.find();
+db.produtos.count(
+  { nome: { $regex: /mc/i } }
+);
 
 //==============================================================================
 
@@ -439,11 +459,9 @@ Requisito 16 - Conte quantos produtos têm 4 ingredientes.
 */
 
 use('commerce');
-db.produtos.updateMany();
-db.produtos.updateOne();
-
-use('commerce');
-db.produtos.find();
+db.produtos.find(
+  { ingredientes: { $size: 4 } } 
+).count();
 
 //===========================================================================
 
@@ -458,11 +476,13 @@ Para isso, escreva no arquivo desafio17.js duas queries, nesta ordem:
 */
 
 use('commerce');
-db.produtos.updateMany();
-db.produtos.updateOne();
+db.produtos.createIndex(
+  { descricao: 'text' },
+  { default_language: "pt" }
+);
 
 use('commerce');
-db.produtos.find();
+db.produtos.find({ $text: { $search: 'frango hamburger' } }).count();
 
 //===========================================================================
 
@@ -477,11 +497,13 @@ Para isso, escreva no arquivo desafio18.js duas queries, nesta ordem:
 */
 
 use('commerce');
-db.produtos.updateMany();
-db.produtos.updateOne();
+db.produtos.createIndex(
+  { descricao: 'text' },
+  { default_language: "pt" }
+);
 
 use('commerce');
-db.produtos.find();
+db.produtos.find({ $text: { $search: "\"feito com\"" } }).count();
 
 //===========================================================================
 
@@ -490,17 +512,27 @@ Requisito 19 - Renomeie o campo descricao para descricaoSite em todos os documen
 
 Para isso, escreva no arquivo desafio19.js duas queries, nesta ordem:
 
-Crie uma query que faça a renomeação do campo descricao para descricaoSite em todos os documentos.
+1- Crie uma query que faça a renomeação do campo descricao para descricaoSite em todos os documentos.
 
-Crie uma query que retorne o nome, descricao e descricaoSite de todos os documentos.
+2- Crie uma query que retorne o nome, descricao e descricaoSite de todos os documentos.
 */
 
 use('commerce');
-db.produtos.updateMany();
-db.produtos.updateOne();
+db.produtos.updateMany(
+  {},
+  { $rename: { descricao: "descricaoSite" } }
+);
+
 
 use('commerce');
-db.produtos.find();
+db.produtos.find(
+  {},
+  { 
+    _id: 0,
+    nome: 1,
+    descricaoSite: 1
+  }
+);
 
 //===========================================================================
 
@@ -509,17 +541,26 @@ Requisito 20 - Remova o campo curtidas do item Big Mac.
 
 Para isso, escreva no arquivo desafio20.js duas queries, nesta ordem:
 
-Crie uma query que faça a remoção do campo curtidas do item Big Mac.
+1- Crie uma query que faça a remoção do campo curtidas do item Big Mac.
 
-Crie uma query que retorne o nome e curtidas de todos os documentos. 
+2- Crie uma query que retorne o nome e curtidas de todos os documentos. 
 */
 
 use('commerce');
-db.produtos.updateMany();
-db.produtos.updateOne();
+db.produtos.updateOne(
+  { nome: "Big Mac" },
+  { $unset: { curtidas: "" }}
+);
 
 use('commerce');
-db.produtos.find();
+db.produtos.find(
+  {},
+  { 
+    _id: 0,
+    nome: 1,
+    descricaoSite: 1
+  }
+);
 
 //===========================================================================
 
@@ -528,11 +569,10 @@ Requisito 21 - Retorne o nome dos sanduíches em que o número de curtidas é ma
 */
 
 use('commerce');
-db.produtos.updateMany();
-db.produtos.updateOne();
-
-use('commerce');
-db.produtos.find();
+db.produtos.find(
+  { $expr: { $gt: ["$curtidas", "$vendidos"] } },
+  { _id: 0, nome: 1 }
+);
 
 //===========================================================================
 
@@ -541,10 +581,8 @@ Requisito 22 - Retorne o nome e a quantidade de vendas (vendidos) dos sanduíche
 */
 
 use('commerce');
-db.produtos.updateMany();
-db.produtos.updateOne();
-
-use('commerce');
-db.produtos.find();
+db.produtos.find(
+  { vendidos: { $mod: [5, 0] } }
+);
 
 //===========================================================================
