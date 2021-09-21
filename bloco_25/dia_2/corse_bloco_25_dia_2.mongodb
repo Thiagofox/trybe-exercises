@@ -1,4 +1,4 @@
-Considere os seguintes documentos na coleção orders :
+// Considere os seguintes documentos na coleção orders :
 
 use ("example_db");
 db.orders.insertMany([
@@ -7,7 +7,7 @@ db.orders.insertMany([
   { _id: 3, item: "cookies", price: 10, ordered: 60 }
 ]);
 
-E os seguintes documentos na coleção warehouses :
+// E os seguintes documentos na coleção warehouses :
 
 use ("example_db");
 db.warehouses.insertMany([
