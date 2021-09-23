@@ -440,7 +440,7 @@ db.samples.aggregate([
 
 // Funções de arredondamento podem ser úteis em vários casos de cálculos na camada de banco de dados.
 
-// Expressão $round
+// Expressão $  
 
 // A expressão $round retorna o número inteiro mais próximo do valor atual e também permite definir a quantidade de casas decimais que você quer manter ao arredondar.
 
