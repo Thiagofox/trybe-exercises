@@ -11,8 +11,8 @@ Exercício 1 - Crie um script para calcular o Índice de Massa Corporal(IMC) de 
   4. Armazene o script no arquivo imc.js . 
 */
 
-/* 
-const peso_115kg = 115;
+
+/* const peso_115kg = 115;
 const altura_1m_75cm = 175;
 
 function calculaImc() { 
@@ -27,7 +27,7 @@ function calculaImc() {
 }
 
 calculaImc(); 
-*/
+ */
 
 /* 
 Exercício 2 - Agora, permita que o script seja executado através do comando npm run imc
