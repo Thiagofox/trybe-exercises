@@ -5,7 +5,7 @@ function dividirNumeros(num1, num2) {
 }
 
 try {
-  const resultado = dividirNumeros(2, 0);
+  const resultado = dividirNumeros(2, 1);
   console.log(`resultado: ${resultado}`);
 } catch (e) {
   console.log(e.message);
