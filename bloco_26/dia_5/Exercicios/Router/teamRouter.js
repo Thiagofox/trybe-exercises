@@ -3,8 +3,9 @@
 const router = require('express').Router();
 const {
     readContentFile,
-  writeContentFile,
+    writeContentFile,
 } = require('../helpers/readWriteFile');
+
 const validations = require('../middlewares/validation');
 const PATH_FILE = './teams.json';
 
