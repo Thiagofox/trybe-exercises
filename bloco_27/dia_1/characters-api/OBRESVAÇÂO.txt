@@ -1,0 +1,1 @@
+Como eu atualizei o Node nessa pasta ele precisa que seja rodado os comando NPM com o sudo antes exemplo sudo npm run dev

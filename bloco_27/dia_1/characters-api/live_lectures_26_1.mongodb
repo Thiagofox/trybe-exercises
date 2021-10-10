@@ -1,0 +1,6 @@
+use ('live_lecture_26_1');
+db.characters.insertMany([
+    { "name": "Abigail", "cartoon": "KND - A Turma do bairro" },
+    { "name": "Corvo", "cartoon": "Solar Opposites" },
+    { "name": "Dexter", "cartoon": "Laborátorio de Dexter" },
+]);
