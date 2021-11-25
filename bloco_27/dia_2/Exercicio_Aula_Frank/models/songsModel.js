@@ -1,4 +1,4 @@
-const connection = require('connect');
+const connection = require('./connection');
 
 const songExists = async ({ name }) => {
   const db = await connection();
