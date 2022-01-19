@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO - trybe</title>
+  </head>
+  <body>
+    <button id='pingButton'>PING</button>
+    <ul id="messages"></ul>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- implementação o script do socket.io dentro da página HTML -->
+    <!-- Pode ser usado um link provido pelo CDNJS , que nos dá toda a biblioteca do socket.io para uso no front-end. O link da biblioteca é: https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js . -->
+
+    <script src="./js/ping.js"> // link para o script do html do ping.js
+
+      // const socket = io();
+      /* 
+      O pacote do socket.io expõe uma função chamada io , que por sua vez é global e, assim que é chamado, executa uma conexão socket com alguém. Esse método por default recebe como parâmetro o mesmo endpoint por onde ele está sendo acessado, ou seja, se estamos na rota http://localhost:3000 , é por aí que ele vai tentar se conectar. Caso você queira se conectar a um servidor num socket específico, basta você informar isso via parâmetro, por exemplo: const socket = io('http://localhost:5000')  
+      */
+    
+    </script>
+  </body>
+
+</html>
