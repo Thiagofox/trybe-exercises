@@ -92,7 +92,7 @@ def merge(left, right, merged):
     return merged
 
 
-print(merge_sort([100, 4, 6, 33, 56, 67]))
+print(merge_sort("thiago"))
 
 
 """
